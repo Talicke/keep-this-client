@@ -21,3 +21,15 @@ jobs:
 
       - name: Push the Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/keep-this-client:latest
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKER_USERNAME }}/keep-this-client:latest
+            docker stop keep-this-client || true
+            docker rm keep-this-client || true
+            docker run -d --name keep-this-client -p 80:80 ${{ secrets.DOCKER_USERNAME }}/keep-this-client:latest
