@@ -1,0 +1,48 @@
+name: CI
+
+# Déclencher le workflow sur push ou pull request sur les branches spécifiées
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# Définir les jobs à exécuter
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Vérification du code source
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Configuration de Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Installation des dépendances
+      - name: Install dependencies
+        run: npm install
+
+      # Lancer les tests
+      - name: Run tests
+        run: npm test
+
+      # Construire l'application
+      - name: Build the project
+        run: npm run build
+
+      # (Optionnel) Télécharger les artefacts de construction pour les consulter plus tard
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-files
+          path: build/
+
+      # (Optionnel) Déploiement à un serveur ou une plateforme (comme GitHub Pages)
+      # Vous pouvez ajouter une étape ici pour déployer votre application.
