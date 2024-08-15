@@ -56,4 +56,4 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/keep-this-client:latest
             docker stop keep-this-client || true
             docker rm keep-this-client || true
-            docker run -d --name keep-this-client -p 8080:80 ${{ secrets.DOCKER_USERNAME }}/keep-this-client:latest
+            docker run -d --name keep-this-client -p 80:80 ${{ secrets.DOCKER_USERNAME }}/keep-this-client:latest
