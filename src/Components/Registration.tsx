@@ -115,7 +115,7 @@ interface IFormInput {
                 </div>
             </div>
             <div className="d-flex justify-content-between flex-row m-3">
-                <a href="#">J'ai déja un compte</a>
+                <a href="/.">J'ai déja un compte</a>
                 <input className="btn btn-primary" type="submit" />
             </div>
         </form>
