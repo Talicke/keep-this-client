@@ -11,8 +11,32 @@
   font-family: 'Mogra', cursive;
 }
 
+input{
+  background-color: #CDD0D2;
+  border-radius: 5px;
+}
+
+.hightlight{
+  border-radius: 15px;
+  background-color: #212529;
+}
+
+.hightlight-shadow{
+  box-shadow: 0px 0px 30px 0px #CDD0D2;
+}
+
 .App-header{
   margin-top: 0;
   background-color: #212529;
   width: 100vw;
+}
+
+.btn-primary{
+  background-color: #394984;
+  border:none;
+  padding: 10px;
+}
+
+.error-message{
+  color : #9C5858
 }
